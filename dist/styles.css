@@ -1,0 +1,256 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  width: 100%;
+  height: 100%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #a1c1e9;
+  font-family: 'Roboto', sans-serif;
+}
+
+#content {
+  width: 1000px;
+  height: 650px;
+  background-color: #ffffff;
+  border: 3px #f1bf1b solid;
+  border-radius: 80px;
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+}
+
+#list-selection-wrapper {
+  border-right: 2px solid #f1bf1b;
+  border-top-left-radius: 80px;
+  border-bottom-left-radius: 80px;
+  background-color: #f6d57f;
+  max-height: 100%;
+  overflow: auto;
+}
+
+#list-selection {
+  display: flex;
+  flex-direction: column;
+  margin: 80px 20px;
+  font-size: 15px;
+}
+
+#lists {
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+#lists > .list {
+  padding: 7px 5px;
+  border-radius: 5px;
+  border-bottom: 2px solid #f1bf1b;
+}
+
+.list {
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+#lists > .list:hover {
+  background-color: #f3e1b3;
+}
+
+#lists > .list.selected {
+  background-color: #f1e8d1;
+}
+
+.button {
+  width: 15px;
+  padding: 2px;
+  border-radius: 4px;
+  margin-left: 3px;
+}
+
+.buttons > img:hover,
+#list-selection > .button:hover {
+  background-color: #ffffff;
+}
+
+#list-selection > .button {
+  margin: 10px auto;
+  width: 35px;
+  padding: 0px;
+  border-radius: 12px;
+}
+
+.list-name-wrapper {
+  margin-right: auto;
+  display: flex;
+  flex-wrap: nowrap;
+  flex-grow: 0;
+}
+
+.list-name {
+  flex-basis: 100%;
+  max-width: 150px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.list-name-edit-box {
+  width: 100%;
+  flex: 1;
+  background-color: #f3e1b3;
+  font-family: 'Roboto', sans-serif;
+  font-size: 15px;
+  border: none;
+  box-shadow: none;
+}
+
+#task-view {
+  height: 90%;
+  margin: 50px;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+#selected-list-name {
+  align-self: center;
+  font-size: 40px;
+  margin-bottom: 40px;
+}
+
+#selected-list-tasks {
+  display: flex;
+  flex-direction: column;
+}
+
+#task-columns {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  font-size: 20px;
+  color: #5b5b5b;
+  margin-bottom: 10px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f1bf1b;
+}
+
+.task {
+  display: grid;
+  grid-template-columns: 4fr 1fr 1fr;
+  padding: 5px;
+  border-radius: 5px;
+  margin-left: 5px;
+}
+
+.task:hover {
+  background-color: #f3f3f3;
+}
+
+.task.selected {
+  background-color: #f6d47f2f;
+  padding-top: 10px;
+}
+
+.task.selected:hover {
+  background-color: #f6d47f5b;
+}
+
+.task-title {
+  margin-left: 10px;
+}
+
+.task > .task-title {
+  margin-left: 10px;
+}
+
+.task-deadline {
+  text-align: center;
+}
+
+.task-priority {
+  text-align: center;
+}
+
+.task-description {
+  display: none;
+}
+
+.task.selected > .task-description {
+  display: flex;
+  flex-direction: column;
+  grid-column: 1 / -1;
+}
+
+.task-description-title {
+  margin: 15px 15px 0;
+  font-size: 13px;
+  color: #b6b6b6;
+}
+
+.task-description-text {
+  margin-top: 5px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.task-description-buttons {
+  align-self: end;
+  margin-right: 20px;
+}
+
+.task-description-buttons > .button:hover {
+  background-color: #f6d47f;
+}
+
+.task-description-edit-box {
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  width: 100%;
+  max-width: 100%;
+  margin-left: -5px;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+  border-bottom-right-radius: 0px;
+}
+
+.task-edit-box {
+  width: 80%;
+  font-size: 15px;
+  font-family: 'Roboto', sans-serif;
+  padding: 5px;
+  border: none;
+  border-radius: 5px;
+}
+
+.task-deadline-edit-box,
+.task-priority-edit-box {
+  text-align: center;
+}
+
+#new-task-button {
+  width: 55px;
+  align-self: flex-end;
+  margin-top: auto;
+}
+
+#new-task-button:hover {
+  background-color: #f1e8d1;
+  border-radius: 22px;
+}
+
+#selected-list-tasks {
+  height: 100%;
+  overflow: scroll;
+}
