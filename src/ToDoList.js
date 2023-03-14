@@ -1,3 +1,5 @@
+import { PersistenceUtils } from './PersistenceUtils';
+
 const List = function (name) {
   this.name = name;
   this.tasks = [];
@@ -12,9 +14,11 @@ const List = function (name) {
 
   this.toString = function () {
     let output = '';
-    output += this.name + ':::';
-    this.tasks.forEach((t) => (output += t.toString() + ';;;'));
-    output += '\n';
+    output += this.name + PersistenceUtils.listAndTaskDelimiter;
+    this.tasks.forEach(
+      (t) => (output += t.toString() + PersistenceUtils.taskDelimiter)
+    );
+    output += PersistenceUtils.listDelimiter;
     return output;
   };
 };
@@ -29,11 +33,11 @@ const Task = function (title, dueDate, priority, description) {
   this.toString = function () {
     return ''.concat(
       this.title,
-      '%',
+      PersistenceUtils.taskElementDelimiter,
       this.dueDate,
-      '%',
+      PersistenceUtils.taskElementDelimiter,
       this.priority,
-      '%',
+      PersistenceUtils.taskElementDelimiter,
       this.description
     );
   };

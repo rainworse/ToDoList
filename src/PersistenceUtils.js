@@ -28,7 +28,7 @@ const PersistenceUtils = (() => {
 
   const parseData = function (data) {
     try {
-      const listStrings = data.split('\n').filter(Boolean);
+      const listStrings = data.split(listDelimiter).filter(Boolean);
       const lists = [];
       for (let i = 0; i < listStrings.length; i++) {
         lists.push(parseList(listStrings[i]));
@@ -40,9 +40,9 @@ const PersistenceUtils = (() => {
   };
 
   const parseList = function (listString) {
-    const [listName, tasksString] = listString.split(':::');
+    const [listName, tasksString] = listString.split(listAndTaskDelimiter);
     const list = new List(listName);
-    const splitTaskStrings = tasksString.split(';;;').filter(Boolean);
+    const splitTaskStrings = tasksString.split(taskDelimiter).filter(Boolean);
     for (let i = 0; i < splitTaskStrings.length; i++) {
       const taskParams = parseTask(splitTaskStrings[i]);
       list.addTask(...taskParams);
@@ -51,14 +51,23 @@ const PersistenceUtils = (() => {
   };
 
   const parseTask = function (taskString) {
-    return taskString.split('%');
+    return taskString.split(taskElementDelimiter);
   };
+
+  const listDelimiter = '$$$';
+  const taskDelimiter = ';;;';
+  const listAndTaskDelimiter = ':::';
+  const taskElementDelimiter = '%';
 
   return {
     checkStorageAvailable,
     getLocalStorageData,
     storeLocalData,
     parseData,
+    listDelimiter,
+    taskDelimiter,
+    listAndTaskDelimiter,
+    taskElementDelimiter,
   };
 })();
 

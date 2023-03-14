@@ -48,7 +48,6 @@ const ListUtils = (() => {
     }
     listDOMElement.remove();
     DOMController.removeList(list, listDOMElement);
-    PersistenceUtils.storeLocalData(DOMController.lists);
   };
 
   const setSelectedList = function (event) {
@@ -74,7 +73,7 @@ const ListUtils = (() => {
     DOMController.displayLists();
     const newEvent = {
       stopPropagation: () => {},
-      target: getListDOMElementFromList(newList).firstChild.firstChild,
+      target: getListDOMElementFromList(newList),
     };
     editList(newEvent);
   };

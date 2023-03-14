@@ -1,4 +1,5 @@
 import { DOMControllerUtils } from './DOMControllerUtils';
+import { PersistenceUtils } from './PersistenceUtils';
 
 const DOMController = (() => {
   let lists = [];
@@ -48,6 +49,7 @@ const DOMController = (() => {
   const removeList = function (list, listDOMElement) {
     lists = lists.filter((l) => l !== list);
     listDOMElements = listDOMElements.filter((d) => d !== listDOMElement);
+    PersistenceUtils.storeLocalData(lists);
   };
 
   const addTask = function (event) {
